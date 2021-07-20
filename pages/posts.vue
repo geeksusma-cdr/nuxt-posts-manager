@@ -31,7 +31,7 @@ export default Vue.extend({
   data() {
     return {
       posts: [] = [] as Post[],
-      message: 'test' as string,
+      message: '' as string,
       snackbar: false as boolean,
     }
   },
