@@ -11,7 +11,9 @@
         </v-row>
         <v-row>
             <v-row v-for="(comment) in comments" :key="comment.id">
-                <CardComment :comment="comment"></CardComment>
+                <v-col>
+                    <CardComment :comment="comment"></CardComment>
+                </v-col>
             </v-row>
         </v-row>
     </div>

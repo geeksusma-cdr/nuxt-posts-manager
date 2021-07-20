@@ -11,7 +11,9 @@
     </v-snackbar>
     <v-row>
       <v-row v-for="(post) in posts" :key="post.id">
-        <CardPost :post="post"></CardPost>
+        <v-col>
+          <CardPost :post="post"></CardPost>
+        </v-col>
       </v-row>
     </v-row>
   </div>
