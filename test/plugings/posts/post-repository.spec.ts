@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Comment, Post, PostPlugin } from '../../../plugins/posts/post-plugin';
+import { Comment, Post, PostRepositoryImpl } from '../../../plugins/posts/post-repository';
 import { PostsData } from "../../data/posts-data";
 
 jest.mock('axios');
@@ -8,10 +8,10 @@ const POST_URL: string = "http://mocks/";
 
 describe('Post Plugin to perform operations using an http client', () => {
 
-    let plugin: PostPlugin;
+    let plugin: PostRepositoryImpl;
 
     beforeEach(() => {
-        plugin = new PostPlugin(POST_URL);
+        plugin = new PostRepositoryImpl(POST_URL);
     })
 
     test('should retrieve posts when fetch', async () => {

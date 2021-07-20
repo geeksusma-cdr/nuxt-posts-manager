@@ -22,7 +22,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import CardComment from '~/components/comments/show/card-comment.vue'
-import { Comment, PostPlugin } from '../plugins/posts/post-plugin'
+import { Comment } from '../plugins/posts/post-repository'
 
 export default Vue.extend({
     components: {
@@ -34,11 +34,10 @@ export default Vue.extend({
             postId: -1
         }
     },
-    async asyncData(context) {
-        const postId = context.params.id
-        const postPlugin = new PostPlugin("https://jsonplaceholder.typicode.com/");
-        const comments: Comment[] = await postPlugin.fetchComments(parseInt(postId));
-        return { postId, comments }
+    async fetch() {
+        const postId = +this.$nuxt.context.params.id
+        this.comments = await this.$posts.fetchComments(postId)
+        this.postId = postId;
     }
 })
 </script>

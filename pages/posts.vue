@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import CardPost from "~/components/posts/show/card-post.vue";
-import { PostPlugin, Post } from "~/plugins/posts/post-plugin";
+import { Post } from "~/plugins/posts/post-repository";
 import Vue from 'vue'
 
 export default Vue.extend({
@@ -36,16 +36,15 @@ export default Vue.extend({
     }
   },
   async fetch() {
-    const postPlugin = new PostPlugin("https://jsonplaceholder.typicode.com/");
-    const fetchedPosts: Post[] = await postPlugin.fetchPosts()
+
+    const fetchedPosts: Post[] = await this.$posts.fetchPosts()
     if (fetchedPosts) {
       this.posts = fetchedPosts;
     }
   },
   methods: {
     async remove(id: number) {
-      const postPlugin = new PostPlugin("https://jsonplaceholder.typicode.com/");
-      await postPlugin.deletePost(id);
+      await this.$posts.deletePost(id)
     }
   },
   mounted() {

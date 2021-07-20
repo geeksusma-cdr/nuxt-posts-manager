@@ -1,4 +1,4 @@
-import { Comment, Post } from "../../plugins/posts/post-plugin";
+import { Comment, Post } from "../../plugins/posts/post-repository";
 
 export class PostsData {
     public static expectedPosts(): Post[] {
